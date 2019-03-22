@@ -1,0 +1,26 @@
+{
+  "name": "minung--dev-goormide-tools",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html -d build --public-url ./",
+  },
+  "author": "minung.han",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss-modules": "^1.4.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
