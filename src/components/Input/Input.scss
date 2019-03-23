@@ -1,0 +1,20 @@
+.Input {
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  background: #2b303b;
+    border-radius: 16px;
+    padding: 16px 24px;
+
+  & input {
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    float: left;
+    color: #efefef;
+    background: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+}
