@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './SearchItem.scss';
 
+import classnames from 'classnames';
+
 function SearchItem(props) {
   return (
-    <div className={styles.SearchItem}>
+    <div className={classnames(styles.SearchItem, props.active && styles.active)}>
       {props.text}
     </div>
   );
@@ -12,9 +14,11 @@ function SearchItem(props) {
 
 SearchItem.propTypes = {
   text: PropTypes.string,
+  active: PropTypes.bool,
 };
 SearchItem.defaultProps = {
-  text: ''
+  text: '',
+  active: false
 };
 
 export default SearchItem;
