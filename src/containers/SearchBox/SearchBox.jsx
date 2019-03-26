@@ -34,7 +34,7 @@ class SearchBox extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(this.initItems, 3000)
+    this.initItems();
   }  
 
   initItems() {
@@ -75,6 +75,7 @@ class SearchBox extends React.Component {
       break;
       case 40:
         this.moveCursorToBottom();
+      break;
       case 13:
         this.state.items[this.state.selectedIndex].item.click()
       break;
