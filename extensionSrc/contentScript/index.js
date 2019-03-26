@@ -7,7 +7,7 @@ document.body.prepend(app);
 
 // inject script
 var s = document.createElement('script');
-s.src = chrome.extension.getURL('build/src.ffeef517.js');
+s.src = chrome.extension.getURL('build/src.0b873a1a.js');
 (document.head || document.documentElement).appendChild(s);
 
 s.parentNode.removeChild(s);

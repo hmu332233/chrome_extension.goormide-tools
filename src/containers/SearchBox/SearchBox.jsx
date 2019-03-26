@@ -20,10 +20,12 @@ class SearchBox extends React.Component {
     super(props);
     this.state = {
       value: '',
-      items: [{ text: 'test' }, { text: 'asdf' }],
-      searchedItems: [{ text: 'test' }, { text: 'asdf' }],
+      items: [],
+      searchedItems: [],
       selectedIndex: 0
     };
+
+    this.initItems = this.initItems.bind(this);
 
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handleArrowPress = this.handleArrowPress.bind(this);
@@ -32,11 +34,24 @@ class SearchBox extends React.Component {
   }
 
   componentDidMount() {
+    setTimeout(this.initItems, 3000)
+  }  
 
+  initItems() {
+    const items = this.getItems();
+    this.setState({ items, searchedItems: items });
   }
 
   getItems() {
-    document.querySelectorAll('#toolbar-context__child-build-menu li:not(.divider)')[1];
+    let items = []
+    document.querySelectorAll('#toolbar-context__child-build-menu li:not(.divider)').forEach((item, index, arr) => {
+      if (index !== 0 && index !== arr.length - 1) {
+        const text = item.querySelector('a').text;
+        items.push({ text, item });
+      }
+    });
+
+    return items
   }
 
   handleValueChange(e) {
@@ -50,13 +65,14 @@ class SearchBox extends React.Component {
 
   handleArrowPress(e) {
     const { keyCode } = e;
-    console.log(keyCode);
     switch (keyCode) {
       case 38:
         this.moveCursorToTop();
       break;
       case 40:
         this.moveCursorToBottom();
+      case 13:
+        this.state.items[this.state.selectedIndex].item.click()
       break;
     }
   }

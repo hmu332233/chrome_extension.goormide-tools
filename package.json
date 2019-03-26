@@ -21,6 +21,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-shortcut": "^1.0.6"
   }
 }
