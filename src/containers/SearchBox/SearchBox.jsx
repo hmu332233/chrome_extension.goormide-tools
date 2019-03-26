@@ -38,13 +38,17 @@ class SearchBox extends React.Component {
   }  
 
   initItems() {
-    const items = this.getItems();
+    const items = [
+      ...this.getItems({ type: 'build' }),
+      ...this.getItems({ type: 'run' })
+    ];
     this.setState({ items, searchedItems: items });
   }
 
-  getItems() {
-    let items = []
-    document.querySelectorAll('#toolbar-context__child-build-menu li:not(.divider)').forEach((item, index, arr) => {
+  getItems({ type }) {
+    let items = [];
+
+    document.querySelectorAll(`#toolbar-context__child-${type}-menu li:not(.divider)`).forEach((item, index, arr) => {
       if (index !== 0 && index !== arr.length - 1) {
         const text = item.querySelector('a').text;
         items.push({ text, item });

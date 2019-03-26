@@ -15,7 +15,7 @@ function MainApp(props) {
         {isOpen && <ToolBox />}
       </div>
       <HotKey 
-        keys={['alt', 'shift', 'k']}
+        keys={['alt', 'shift', 'h']}
         onKeysCoincide={toggle}
       />
     </React.Fragment>
