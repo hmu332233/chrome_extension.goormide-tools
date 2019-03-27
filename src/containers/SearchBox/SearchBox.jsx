@@ -77,7 +77,8 @@ class SearchBox extends React.Component {
         this.moveCursorToBottom();
       break;
       case 13:
-        this.state.items[this.state.selectedIndex].item.click()
+        this.state.items[this.state.selectedIndex].item.click();
+        this.props.itemClickHandler();
       break;
     }
   }
@@ -101,7 +102,7 @@ class SearchBox extends React.Component {
   render() {
     return (
       <div className={classnames(styles.SearchBox, this.props.className)}>
-        <Input className={styles.SearchBox__input} onChange={this.handleValueChange} onKeyDown={this.handleArrowPress} />
+        <Input className={styles.SearchBox__input} onChange={this.handleValueChange} onKeyDown={this.handleArrowPress} autoFocus />
         <SearchItemList items={this.state.searchedItems} selectedIndex={this.state.selectedIndex} />
       </div>
     );
@@ -110,9 +111,11 @@ class SearchBox extends React.Component {
 
 SearchBox.propTypes = {
   className: PropTypes.string,
+  itemClickHandler: PropTypes.func,
 };
 SearchBox.defaultProps = {
-  className: ''
+  className: '',
+  itemClickHandler: v => v
 };
 
 export default SearchBox;
