@@ -4,8 +4,6 @@ import styles from './ToolBox.scss';
 
 import classnames from 'classnames';
 
-import HotKey from 'react-shortcut';
-
 import useToggle from 'hooks/useToggle';
 import SearchBox from 'containers/SearchBox';
 
