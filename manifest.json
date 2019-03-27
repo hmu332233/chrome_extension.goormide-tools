@@ -14,6 +14,6 @@
       "run_at": "document_end"
     }
   ],
-  "web_accessible_resources": ["build/src.4e234ea2.js"],
+  "web_accessible_resources": ["build/src.cc60f233.js"],
   "permissions": ["activeTab"]
 }

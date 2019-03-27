@@ -22,6 +22,7 @@ class SearchBox extends React.Component {
       value: '',
       items: [],
       searchedItems: [],
+      selectedItem: {},
       selectedIndex: 0
     };
 
@@ -42,7 +43,9 @@ class SearchBox extends React.Component {
       ...this.getItems({ type: 'build' }),
       ...this.getItems({ type: 'run' })
     ];
-    this.setState({ items, searchedItems: items });
+    if (items.length > 0) {
+      this.setState({ items, searchedItems: items, selectedItem: items[0] });
+    }
   }
 
   getItems({ type }) {
@@ -55,7 +58,7 @@ class SearchBox extends React.Component {
       }
     });
 
-    return items
+    return items;
   }
 
   handleValueChange(e) {
@@ -63,7 +66,9 @@ class SearchBox extends React.Component {
     const searchedItems = this.state.items.filter(item => item.text.includes(value));
     this.setState({
       value: e.target.value,
-      searchedItems
+      searchedItems,
+      selectedItem: searchedItems[0],
+      selectedIndex: 0
     });
   }
 
@@ -77,7 +82,7 @@ class SearchBox extends React.Component {
         this.moveCursorToBottom();
       break;
       case 13:
-        this.state.items[this.state.selectedIndex].item.click();
+        this.state.selectedItem.item.click();
         this.props.itemClickHandler();
       break;
     }
@@ -88,7 +93,7 @@ class SearchBox extends React.Component {
     if (nextIndex < 0) {
       nextIndex = this.state.searchedItems.length - 1;
     }
-    this.setState({ selectedIndex: nextIndex });
+    this.setState({ selectedIndex: nextIndex, selectedItem: this.state.searchedItems[nextIndex] });
   }
 
   moveCursorToBottom() {
@@ -96,7 +101,7 @@ class SearchBox extends React.Component {
     if (nextIndex >= this.state.searchedItems.length) {
       nextIndex = 0;
     }
-    this.setState({ selectedIndex: nextIndex });
+    this.setState({ selectedIndex: nextIndex, selectedItem: this.state.searchedItems[nextIndex] });
   }
 
   render() {
