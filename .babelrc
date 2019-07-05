@@ -4,10 +4,10 @@
     ["babel-plugin-module-resolver", {
       "root": ["./src"],
       "alias": {
-        "utils": "./src/utils",
-        "components": "./src/components",
-        "containers": "./src/containers",
-        "hooks": "./src/hooks"
+        "utils": "./src/app/utils",
+        "components": "./src/app/components",
+        "containers": "./src/app/containers",
+        "hooks": "./src/app/hooks"
       }
     }]
   ]
