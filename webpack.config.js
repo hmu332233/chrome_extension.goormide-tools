@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
-  // mode: 'production',
+  mode: 'production',
   entry: {
     contentScripts: './src/contentScripts/index.js',
     app: './src/app/index.js',
