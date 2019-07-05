@@ -1,13 +1,12 @@
 .SearchBox {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 16px;
 
   width: 300px;
   
-  background: #343d46;
-  border: 1px solid #efefef;
-  border-radius: 16px;
+  background: #384051;
+  border: 1px solid #14161C;
 
   &__input {
     margin-bottom: 16px;
@@ -16,7 +15,6 @@
 
 .SearchItemList 
 {
-  background: #2b303b;
-  border-radius: 16px;
-  padding: 8px;
+  background: #222734;
+  border: 1px solid #14161C;
 }
