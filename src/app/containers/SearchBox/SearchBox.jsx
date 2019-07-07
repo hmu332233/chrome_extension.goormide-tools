@@ -51,7 +51,7 @@ class SearchBox extends React.Component {
   getItems({ type }) {
     let items = [];
 
-    document.querySelectorAll(`#toolbar-context__child-${type}-menu li:not(.divider)`).forEach((item, index, arr) => {
+    document.querySelectorAll(`#toolbar-context__child-${type}-menu li:not(.divider):not(.dropdown-divider)`).forEach((item, index, arr) => {
       if (index !== 0 && index !== arr.length - 1) {
         const text = item.querySelector('a').text;
         items.push({ text, item });
