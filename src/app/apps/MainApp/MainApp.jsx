@@ -5,26 +5,34 @@ import styles from './MainApp.scss';
 import useToggle from 'hooks/useToggle';
 import ToolBox from 'containers/ToolBox';
 
-function MainApp(props) {
-  const [isOpen, toggle, setTrue, setFalse] = useToggle(false);
-  useEffect(() => {
-    // FIXME: 이벤트를 계속 add, remove를 반복하는데 이렇게 하지 않고 할 방법 찾기
+class MainApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+    this.toggle = this.toggle.bind(this)
+  }
+  componentDidMount() {
     const handleShortcut = e => {
       if (e.ctrlKey && e.shiftKey && e.which == 76) {
-        toggle();
+        this.toggle();
+      } else if (this.state.isOpen && e.keyCode == 27) {
+        this.setState({ isOpen: false });
       }
     };
     document.addEventListener('keyup', handleShortcut, false);
-    return () => {
-      document.removeEventListener('keyup', handleShortcut, false);
-    };
-  }, [isOpen]);
-
-  return (
-    <div className={styles.MainApp}>
-      {isOpen && <ToolBox toggle={toggle} />}
-    </div>
-  );
+  }
+  toggle() {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  }
+  render() {
+    return (
+      <div className={styles.MainApp}>
+        {this.state.isOpen && <ToolBox toggle={this.toggle} />}
+      </div>
+    );
+  }
 }
 
 MainApp.propTypes = {
