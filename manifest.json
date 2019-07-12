@@ -8,7 +8,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://ide-run.goorm.io/*"],
+      "matches": ["https://ide-run.goorm.io/*", "https://ide-beta-run.goorm.io/*"],
       "js": ["build/contentScripts.js"],
       "css": ["build/style.css"],
       "run_at": "document_end"

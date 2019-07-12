@@ -38,7 +38,7 @@ module.exports = {
     })
   ],
   optimization: {
-    // minimize: true
+    minimize: true
   },
   resolve: {
     modules: ['node_modules'],
