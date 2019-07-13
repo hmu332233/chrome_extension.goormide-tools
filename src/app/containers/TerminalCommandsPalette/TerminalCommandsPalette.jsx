@@ -8,6 +8,7 @@ class TerminalCommandsPalette extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       items: [],
     };
 
@@ -28,7 +29,7 @@ class TerminalCommandsPalette extends React.Component {
       ...this.getItems({ type: 'deploy' }),
     ];
     if (items.length > 0) {
-      this.setState({ items });
+      this.setState({ items, isLoading: false });
     }
   }
 
@@ -49,7 +50,9 @@ class TerminalCommandsPalette extends React.Component {
   }
 
   render() {
-    return (
+    return this.state.isLoading ? (
+      <div></div>
+    ) : (
       <SearchBox
         items={this.state.items}
         itemClickHandler={this.handleItemClick}

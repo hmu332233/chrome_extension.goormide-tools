@@ -2,31 +2,31 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './MainApp.scss';
 
-import ToolBox from 'containers/ToolBox';
+import TerminalCommandsPalette from 'containers/TerminalCommandsPalette';
 
 class MainApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isTerminalCommandsPaletteOpen: false
     }
-    this.toggle = this.toggle.bind(this);
+    this.toggleTerminalCommandsPalette = this.toggleTerminalCommandsPalette.bind(this);
   }
   componentDidMount() {
-    document.addEventListener('terminal_commands_palette', this.toggle, false);
+    document.addEventListener('terminal_commands_palette', this.toggleTerminalCommandsPalette, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('terminal_commands_palette', this.toggle);
+    document.removeEventListener('terminal_commands_palette', this.toggleTerminalCommandsPalette);
   }
 
-  toggle() {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  toggleTerminalCommandsPalette() {
+    this.setState(prevState => ({ isTerminalCommandsPaletteOpen: !prevState.isTerminalCommandsPaletteOpen }));
   }
   render() {
     return (
       <div className={styles.MainApp}>
-        {this.state.isOpen && <ToolBox toggle={this.toggle} />}
+        {this.state.isTerminalCommandsPaletteOpen && <TerminalCommandsPalette toggle={this.toggleTerminalCommandsPalette} />}
       </div>
     );
   }

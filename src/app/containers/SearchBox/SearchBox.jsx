@@ -20,7 +20,7 @@ class SearchBox extends React.Component {
     super(props);
     this.state = {
       value: '',
-      searchedItems: [],
+      searchedItems: props.items,
       selectedItem: {},
       selectedIndex: 0
     };
