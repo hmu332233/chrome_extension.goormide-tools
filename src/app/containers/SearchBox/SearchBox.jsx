@@ -20,13 +20,10 @@ class SearchBox extends React.Component {
     super(props);
     this.state = {
       value: '',
-      items: [],
       searchedItems: [],
       selectedItem: {},
       selectedIndex: 0
     };
-
-    this.initItems = this.initItems.bind(this);
 
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handleArrowPress = this.handleArrowPress.bind(this);
@@ -34,41 +31,14 @@ class SearchBox extends React.Component {
     this.moveCursorToBottom = this.moveCursorToBottom.bind(this);
   }
 
-  componentDidMount() {
-    this.initItems();
-  }  
-
-  initItems() {
-    const items = [
-      ...this.getItems({ type: 'build' }),
-      ...this.getItems({ type: 'run' })
-    ];
-    if (items.length > 0) {
-      this.setState({ items, searchedItems: items, selectedItem: items[0] });
-    }
-  }
-
-  getItems({ type }) {
-    let items = [];
-
-    document.querySelectorAll(`#toolbar-context__child-${type}-menu li:not(.divider):not(.dropdown-divider)`).forEach((item, index, arr) => {
-      if (index !== 0 && index !== arr.length - 1) {
-        const text = item.querySelector('a').text;
-        items.push({ text, item });
-      }
-    });
-
-    return items;
-  }
-
   handleValueChange(e) {
     const value = e.target.value;
-    const searchedItems = this.state.items.filter(item => item.text.includes(value));
+    const searchedItems = this.props.items.filter(item => item.text.includes(value));
     this.setState({
       value: e.target.value,
       searchedItems,
+      selectedIndex: 0,
       selectedItem: searchedItems[0],
-      selectedIndex: 0
     });
   }
 
@@ -82,8 +52,7 @@ class SearchBox extends React.Component {
         this.moveCursorToBottom();
       break;
       case 13:
-        this.state.selectedItem.item.click();
-        this.props.itemClickHandler();
+        this.props.itemClickHandler(this.state.selectedItem);
       break;
     }
   }
