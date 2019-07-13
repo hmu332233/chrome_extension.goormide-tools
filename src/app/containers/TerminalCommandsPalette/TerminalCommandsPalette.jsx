@@ -37,7 +37,7 @@ class TerminalCommandsPalette extends React.Component {
     document.querySelectorAll(`#toolbar-context__child-${type}-menu li:not(.divider):not(.dropdown-divider)`).forEach((item, index, arr) => {
       if (index !== 0 && index !== arr.length - 1) {
         const text = item.querySelector('a').text;
-        items.push({ text: `${type}: ${text}`, item });
+        items.push({ text: `${type}:${text}`, item });
       }
     });
     return items;
