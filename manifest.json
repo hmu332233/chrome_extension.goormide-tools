@@ -1,19 +1,29 @@
 {
   "manifest_version": 2,
   "name": "goormide-tools",
-  "version": "0.0.2",
-  "description": "goormide-tools",
-  "browser_action": {
-    "default_title": "test"
+  "version": "0.1.0",
+  "description": "Add features to goormide.",
+  "commands": {
+    "terminal_commands_palette": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "terminal commans palette"
+    }
+  },
+  "background": {
+    "scripts": ["build/background.js"],
+    "persistent": true
   },
   "content_scripts": [
     {
-      "matches": ["https://ide-run.goorm.io/*"],
-      "js": ["extensionSrc/contentScript/index.js"],
-      "css": ["build/src.32bdb46c.css"],
+      "matches": ["https://ide-run.goorm.io/*", "https://ide-beta-run.goorm.io/*"],
+      "js": ["build/contentScripts.js"],
+      "css": ["build/style.css"],
       "run_at": "document_end"
     }
   ],
-  "web_accessible_resources": ["build/src.cc60f233.js"],
+  "web_accessible_resources": ["build/app.js"],
   "permissions": ["activeTab"]
 }
