@@ -21,7 +21,7 @@ class SearchBox extends React.Component {
     this.state = {
       value: '',
       searchedItems: props.items,
-      selectedItem: {},
+      selectedItem: props.items[0],
       selectedIndex: 0
     };
 
