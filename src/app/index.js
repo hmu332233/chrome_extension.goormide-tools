@@ -1,6 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { LitElement, html } from 'lit-element';
 
-import MainApp from './apps/MainApp';
+export class GoormideTools extends LitElement {
+  constructor() {
+    super();
+  }
 
-ReactDOM.render(<MainApp />, document.getElementById('goormide-tools'));
+  render() {
+    return html`<div></div>`;
+  }
+}
+
+customElements.define('goormide-tools', GoormideTools);

@@ -1,14 +1,15 @@
 // contentScript.js
 
-var app = document.createElement('div');
-app.id = 'goormide-tools';
-document.body.prepend(app);
+
 
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('build/app.js');
 (document.head || document.documentElement).appendChild(s);
 
 s.parentNode.removeChild(s);
+
+var app = document.createElement('goormide-tools');
+document.body.prepend(app);
 
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
